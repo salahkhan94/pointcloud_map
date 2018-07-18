@@ -43,7 +43,7 @@ public:
       pcl_conversions::toPCL(*pcl_in,*cloud);
       pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
       sor.setInputCloud (cloud);
-      sor.setLeafSize (0.05f, 0.05f, 0.05f);
+      sor.setLeafSize (0.1f, 0.1f, 0.1f);
       sor.filter (*cloud_filtered);
       pcl::fromPCLPointCloud2(*cloud_filtered,test_cloud);
       pcl::toROSMsg(test_cloud,pcl_out);
