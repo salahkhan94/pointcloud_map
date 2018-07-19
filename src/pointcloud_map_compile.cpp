@@ -11,6 +11,7 @@
 #include <pcl/PCLPointCloud2.h>
 #include <pcl_conversions/pcl_conversions.h>
 #include <pcl/conversions.h>
+#include <string>
 
 class PointCloudMap
 {
@@ -19,7 +20,9 @@ public:
   {
       pub1 = n_.advertise<sensor_msgs::PointCloud2>("pointcloud_map", 5);
       pub2 = n_.advertise<sensor_msgs::PointCloud2>("pointcloud_transformed", 5);
-      sub1 = n_.subscribe("/elas/point_cloud", 5, &PointCloudMap::transformCallback, this);  
+      std::string s;
+      n_.param<std::string>("point_cloud_topic", s, "/elas/point_cloud");
+      sub1 = n_.subscribe(s, 5, &PointCloudMap::transformCallback, this);  
       tf_listener = new tf::TransformListener();
       q = 0;
   }
