@@ -1,0 +1,9 @@
+<!-- -->
+<launch>
+ <param name="point_cloud_topic" value="/zed_stereo/points2" />
+ <node pkg="pointcloud_map" type="pointcloud_map_node" name="transform_pointcloud">
+	 <param name="point_cloud_topic" value="/zed_stereo/points2" />         
+         </node>
+         
+         
+</launch>
